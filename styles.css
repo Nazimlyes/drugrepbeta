@@ -164,3 +164,62 @@ ul li {
   padding: 0.5rem 0;
   border-bottom: 1px solid #e5e7eb;
 }
+/* ========================
+   DARK MODE
+======================== */
+body.dark-mode {
+  background: #1f2937;
+  color: #f3f4f6;
+}
+
+body.dark-mode .card {
+  background: #374151;
+  color: #f3f4f6;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .card h2 {
+  color: #c084fc;
+}
+
+body.dark-mode .doctor-list button {
+  background: #4b5563;
+  color: #e9d5ff;
+}
+
+body.dark-mode .doctor-list button:hover {
+  background: #6b7280;
+}
+
+body.dark-mode .btn.full-btn {
+  background: #c084fc;
+  color: white;
+}
+
+body.dark-mode .btn.full-btn:hover {
+  background: #9333ea;
+}
+
+body.dark-mode .navbar {
+  background: #1e40af;
+}
+
+body.dark-mode .navbar .btn {
+  background: #c084fc;
+  color: white;
+}
+
+body.dark-mode .navbar .btn:hover {
+  background: #9333ea;
+}
+
+body.dark-mode .map-placeholder,
+body.dark-mode .chart-placeholder {
+  background: #4b5563;
+  color: #c084fc;
+}
+
+body.dark-mode ul li,
+body.dark-mode .doctor-list li {
+  border-color: #6b7280;
+}
