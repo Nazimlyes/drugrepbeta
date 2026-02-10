@@ -1,174 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DrugRep Assistant Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="stylesdark.css">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">DrugRep Assistant</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            More
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Schedule</a></li>
-            <li><a class="dropdown-item" href="#">Map</a></li>
-            <li><a class="dropdown-item" href="#">analytics</a></li>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">DrugRep Assistant</div>
+    <div>
+      <button class="btn">Sign in</button>
+      <button class="btn">Dark Mode</button>
+    </div>
+  </header>
+
+  <!-- DASHBOARD -->
+  <main class="dashboard">
+    <!-- LEFT COLUMN -->
+    <div class="left-column">
+      <!-- Daily Smart Plan Card -->
+      <div class="card">
+        <h2>Daily Smart Plan</h2>
+        <ul class="doctor-list" id="doctorList"></ul>
+      </div>
+
+      <!-- Doctor Insights Card -->
+      <div class="card">
+        <h2>Doctor Insights</h2>
+        <p>Select a doctor to see their specialty, commune, and opening hours.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-column">
+      <!-- Map -->
+      <div class="map-card card">
+        <div id="map" style="height: 100%; border-radius:0.75rem;"></div>
+      </div>
+
+      <!-- Small cards stacked vertically -->
+      <div class="right-small-cards">
+        <div class="card">
+          <h2>Analytics</h2>
+          <canvas id="analyticsChart"></canvas>
+        </div>
+        <div class="card">
+          <h2>Assigned Tasks</h2>
+          <ul>
+            <li>Visit Dr. Batata Yasmine</li>
+            <li>Follow-up with Dr. Ad Hocine</li>
+            <li>Submit weekly report</li>
           </ul>
-        </li>
-      </ul>
+        </div>
+        <div class="card">
+          <h2>Quick Stats</h2>
+          <ul>
+            <li>5 visits today</li>
+            <li>3 pending tasks</li>
+            <li>2 new doctors</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-</nav>
-<section class="bg-light text-center py-5 pt-7 hero-section">
-  <div class="container">
-    <h1 class="display-4 hero-title">Welcome to Drugrep Assistant</h1>
-    <p class="lead hero-text mb-4">
-      Organize all your doctor visits by date, commune, and visit time.
-      Save time and manage your schedule effortlessly.
-    </p>
-    <a href="#features" class="btn btn-primary btn-lg">Explore Features</a>
-  </div>
-</section>
-   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </main>
 
-  <div class="container">
-    <div class="card mb-4 mx-auto" style="max-width: 600px;">
-      <img src="drugrep_photo.png" class="card-img-top" alt="dashboard">
-      <div class="card-body">
-        <h5 class="card-title">Efficient Visit Planner</h5>
-        <p class="card-text">
-          Organize all your doctor visits by date, commune, and time. 
-          Save time and manage your schedule effortlessly with your full database at your fingertips.
-        </p>
-        <a href="#" class="btn btn-primary">Learn More</a>
-      </div>
-    </div>
-  </div>
-</section>
-    </section>
-<section id="features" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center mb-5">Key Features</h2>
-    <div class="row g-4 justify-content-center">
-      <div class="col-md-4">
-        <div class="card h-100 p-3">
-          <h5 class="card-title">Doctor & Pharmacy Cards</h5>
-          <p class="card-text">
-            Centralized profiles with specialty, commune, wait time,
-            visit history, and prescription behavior.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 p-3">
-          <h5 class="card-title">Knowledge Retention</h5>
-          <p class="card-text">
-            Preserve critical field information so work is never lost
-            when a representative changes sector.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 p-3">
-          <h5 class="card-title">Visit Outcomes & Tags</h5>
-          <p class="card-text">
-            Track visit results: visited, potential prescriber,
-            confirmed via pharmacy feedback.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 p-3">
-          <h5 class="card-title">Institutions & Groups</h5>
-          <p class="card-text">
-            Manage hospitals, clinics, and institutions with multiple doctors
-            working different shifts.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card h-100 p-3">
-          <h5 class="card-title">Manager Interaction</h5>
-          <p class="card-text">
-            Managers can assign tasks, send pings,
-            and track activities across the field force.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- <section class="py-5 bg-light">
-      <div class="container">
-        <h2 class="text-center mb-4">Contact Us</h2>
-        <div class="row justify-content-center">
-          <div class="col-md-6">
-            <form>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                <div class="form-text">We'll never share your email.</div>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password">
-              </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="check">
-                <label class="form-check-label" for="check">Remember me</label>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-<div class="container py-5">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <div class="card text-center">
-        <div class="card-header">Quote</div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>There can be economy only where there is efficiency.</p>
-            <footer class="blockquote-footer">
-              Benjamin Disraeli
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-<footer class="py-4">
-  <div class="container" style="max-width: 600px; background-color: #0d6efd; color: white; padding: 20px; border-radius: 5px;">
-    <p class="mb-0">&copy; 2026 Drugrep Assistant. Efficiency above all else.</p>
-  </div>
-</footer>
-  </div>
-</div>
+  <script src="js.js"></script>
 </body>
 </html>
