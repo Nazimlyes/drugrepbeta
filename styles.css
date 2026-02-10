@@ -71,9 +71,8 @@ body {
   gap: 1rem;
 }
 
-/* Map spans two rows */
 .map-card {
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 2; /* map spans two rows */
   height: 100%;
 }
 
@@ -164,6 +163,7 @@ ul li {
   padding: 0.5rem 0;
   border-bottom: 1px solid #e5e7eb;
 }
+
 /* ========================
    DARK MODE
 ======================== */
@@ -221,5 +221,82 @@ body.dark-mode .chart-placeholder {
 
 body.dark-mode ul li,
 body.dark-mode .doctor-list li {
-  border-color: #6b7280;
+  border-color: #6b7280; 
+}
+
+/* ========================
+   RESPONSIVE DESIGN
+======================== */
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr; /* stack left & right */
+    padding: 1rem;
+  }
+
+  .right-column {
+    grid-template-columns: 1fr; /* map above, small cards below */
+    gap: 1rem;
+  }
+
+  .map-card {
+    grid-row: auto; /* reset spanning */
+    height: 300px; /* smaller height */
+  }
+
+  .right-small-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .right-small-cards .card {
+    flex: 1 1 45%;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  .card {
+    padding: 0.75rem;
+  }
+
+  .doctor-list button {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .right-small-cards {
+    flex-direction: column;
+  }
+
+  #map {
+    height: 250px;
+  }
+}
+
+/* Extra small screens (very small phones) */
+@media (max-width: 480px) {
+  #map {
+    height: 200px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .navbar .btn {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+
+  .doctor-list button {
+    font-size: 0.85rem;
+  }
 }
